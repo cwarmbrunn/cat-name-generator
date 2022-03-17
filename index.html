@@ -28,19 +28,20 @@
         it could be useful to grab the name of the user, 
     then store in localStorage + generate the restaurant at the end with 
     ("Hi (user), try this restaurant out based on your likes!")-->
-
-    <h1> Welcome to Restaurant Matcher!</h1>
-    <p> TEST Our mission is to provide you with a clear restaurant recommendation based on your reactions to food
-        images. To get started, tell us your name! </p>
-    <form id="user-form">
-        <label class="form-label" for="name"> Tell Us Your Name: </label>
-        <input name="name" id="name" type="text" autofocus="true" class="form-input" placeholder="John Doe">
-        <button type="submit" class="btn submitBtn"> <i class="fa fa-search"></i> Submit</button>
-    </form>
-
+    <div id="welcome">
+        <h1> Welcome to Restaurant Matcher!</h1>
+        <p>Our mission is to provide you with a clear restaurant recommendation based on your reactions to food
+            images. To get started, tell us your name! </p>
+        <form id="user-form">
+            <label class="form-label" for="name"> Tell Us Your Name: </label>
+            <input name="name" id="name" type="text" autofocus="true" class="form-input" placeholder="John Doe">
+            <button type="submit" class="btn submitBtn"> <i class="fa fa-search"></i> Submit</button>
+        </form>
+    </div>
     <!-- FOOD IMAGES -->
     <div id="food-images">
         <h3> What Do You Think About This Dish?</h3>
+        <div id="food-content"></div>
     </div>
 
     <!-- PRIMARY - SCRIPT.JS LINK -->
