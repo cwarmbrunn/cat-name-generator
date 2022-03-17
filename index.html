@@ -24,10 +24,12 @@
 <body>
 
     <!-- FORM START -->
+
     <!-- Since we will need user input (needs to accept/respond to it), 
         it could be useful to grab the name of the user, 
     then store in localStorage + generate the restaurant at the end with 
     ("Hi (user), try this restaurant out based on your likes!")-->
+
     <div id="welcome">
         <h1> Welcome to Restaurant Matcher!</h1>
         <p>Our mission is to provide you with a clear restaurant recommendation based on your reactions to food
@@ -38,13 +40,25 @@
             <button type="submit" class="btn submitBtn"> <i class="fa fa-search"></i> Submit</button>
         </form>
     </div>
-    <!-- FOOD IMAGES -->
-    <div id="food-images">
-        <h3> What Do You Think About This Dish?</h3>
-        <div id="food-content"></div>
-    </div>
+    <!-- FORM END -->
 
-    <!-- PRIMARY - SCRIPT.JS LINK -->
+    <!-- FOOD IMAGES CONTAINER START -->
+
+    <!-- TITLE -->
+    <div id="food-title"></div>
+
+    <!-- FOOD PICTURES -->
+    <div id="foodpics"></div>
+
+    <!-- VOTING BUTTONS -->
+    <div id="buttons"></div>
+
+    <!-- FOOD IMAGES CONTAINER END -->
+
+    <!-- PRIMARY - JQUERY SCRIPT LINK
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+
+    <!-- SECONDARY  - SCRIPT.JS LINK -->
     <script src="assets/js/script.js"></script>
 
 </body>
