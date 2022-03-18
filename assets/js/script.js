@@ -71,7 +71,7 @@ var catImageGenerator = function () {
 
         //Adds in dynamic HTML that shows a random cat image with a fixed width and height ratio
         catPicsEl.innerHTML =
-          "<img src= " + data[0].url + " width ='400' height='300'>";
+          "<img src= " + data[0].url + " width ='400' height='500' class='catpics'>";
 
         // Adds in a "yes" or "no" voting button for the cat image
         catVotingEl.innerHTML =
