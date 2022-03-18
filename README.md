@@ -1,16 +1,16 @@
 **Project Title:**
 
-Restaurant Matcher
+Cat Name Generator
 
 ---
 
 **Project Description/Summary:**
 
-Creating a site that will users to "like" or "dislike" photos of random food dishes - once they've gone through a set number of food images, a restaurant related to their liked food dishes will populate.
+Creating a site that will allow users to "like" or "dislike" photos of random cats - once they've picked a cat photo, they can give it a common or rare name.
 
 **Live Site:**
 
-Head over to https://cwarmbrunn.github.io/restaurant-matcher/ to view the page live!
+Head over to https://cwarmbrunn.github.io/cat-name-generator/ to view the page live!
 
 ---
 

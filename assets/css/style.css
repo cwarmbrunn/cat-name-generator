@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: black;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: rgb(253, 253, 253);
+  --secondary: rgb(0, 0, 0);
+  --tertiary: rgb(233, 170, 159);
+  --dark: #38302e;
+  --light-dark: #6f6866;
+  --border-radius: 0.2rem;
+}
+
+/* BODY STYLING */
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  text-align: center;
+}
+
+h1,
+h3 {
+  padding: 20px;
+  text-align: center;
+}
+
+p {
+  padding: 20px;
+  text-align: center;
+}
+
+#user-form {
+  padding: 20px;
+  text-align: center;
+}
+
+/* BUTTON STYLING */
+.btn {
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding: 6px 5px;
+  display: block;
+  margin: 5px 0;
+  border-radius: var(--border-radius);
+  border: none;
+  outline: none;
+  background-color: var(--light-dark);
+  box-shadow: 3px 3px var(--dark);
+  transform: translate(-1px, -1px);
+  top: -4px;
+}
+.btn:hover {
+  color: var(--secondary);
+  background-color: var(--tertiary);
+  transform: translate(0, 0);
+  box-shadow: 2px 2px var(--dark);
+  top: -3px;
+}
+.btn:active {
+  box-shadow: 0 0px var(--dark);
+  color: var(--secondary);
+  top: 0;
+}
+
+.submitBtn {
+  display: inline-block;
+  margin: 10px;
+}
+#yesBtn {
+  display: inline-block;
+  margin: 10px;
+}
+
+#noBtn {
+  display: inline-block;
+  margin: 10px;
+}
+/* IMAGE STYLING */
+.catpics {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+/* FOOTER STYLING */
+
+footer {
+  margin-top: 20px;
+  text-align: center;
+}
