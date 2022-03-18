@@ -10,11 +10,14 @@ var nameInputEl = document.querySelector(".form-input");
 /* CAT IMAGE DIV - Area where cat images will load */
 var catTitleEl = document.getElementById("start-title");
 
-/* CAT IMAGES - P element for cat images */
+/* CAT IMAGES - Element for cat images */
 var catPicsEl = document.getElementById("cat-pics");
 
 /* CAT VOTING BUTTONS - Buttons to vote on cat image */
 var catVotingEl = document.getElementById("buttons");
+
+/* CAT NAME GENERATOR - Area where name generator will start */
+var catNameGeneratorEl = document.getElementById("name-generator");
 
 // Function that starts when submit button is clicked
 var startFunction = function (event) {
@@ -37,7 +40,7 @@ var startFunction = function (event) {
       userInput: name,
     };
     userNameInfo.push(userName);
-    localStorage.setItem("username", JSON.stringify(userNameInfo));
+    localStorage.setItem("User Name", JSON.stringify(userNameInfo));
   }
 };
 
@@ -51,16 +54,15 @@ var catImageGenerator = function () {
 
   // Fetch The Cat API URL and then do the following if the response is ok
   fetch(theCatAPIURL, {
-    headers: { "x-api-key": " e0f87712-5e34-4cf6-b2b4-27764dde618c" },
+    headers: { "x-api-key": "e0f87712-5e34-4cf6-b2b4-27764dde618c" },
   }).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
         console.log(data);
         console.log(data[0].url);
 
-        console.log(JSON.parse(localStorage.getItem("username")));
-
-        let inputName = localStorage.getItem("username");
+        var inputName = localStorage.getItem("User Name");
+        console.log(inputName);
 
         // Adds in dynamic HTML that addresses the user by their name
         catTitleEl.innerHTML =
@@ -71,7 +73,9 @@ var catImageGenerator = function () {
 
         //Adds in dynamic HTML that shows a random cat image with a fixed width and height ratio
         catPicsEl.innerHTML =
-          "<img src= " + data[0].url + " width ='400' height='500' class='catpics'>";
+          "<img src= " +
+          data[0].url +
+          " width ='400' height='500' class='catpics'>";
 
         // Adds in a "yes" or "no" voting button for the cat image
         catVotingEl.innerHTML =
@@ -110,13 +114,37 @@ var catImageGenerator = function () {
 
       // Runs when cat image is selected
       var catImageSelected = function () {
-        console.log();
+        hide(catVotingEl);
+        hide(catPicsEl);
+        hide(catTitleEl);
+
+        // var catImgData = catPicsEl.innerHTML.getAttribute("src");
+
+        // console.log(catImgData);
+
+        /* LOCAL STORAGE - Setting up localStorage to grab image URL */
+        let catPictureURL =
+          JSON.parse(localStorage.getItem(catPicsEl.innerHTML)) || [];
+
+        // Setting up localStorage for the image URL - this will contain the cat image URL that the user picks.
+        var userCatSelection = { selectedURL: catPicsEl.innerHTML };
+
+        catPictureURL.push(userCatSelection);
+        localStorage.setItem("Cat Image URL", JSON.stringify(catPictureURL));
+
+        catNameGenerator();
       };
     } else {
       // Console log if error
       console.log("Help!");
     }
   });
+};
+
+// Cat Name Generator will start here
+var catNameGenerator = function () {
+  catNameGeneratorEl.innerHTML =
+    "<h3> Now that you have a furry friend picked out, decide on a name! </h3>";
 };
 
 // Hide Elements
