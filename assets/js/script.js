@@ -7,83 +7,117 @@ var userFormEl = document.getElementById("user-form");
 /* NAME INPUT - Form Input where User inputs Name */
 var nameInputEl = document.querySelector(".form-input");
 
-/* LOCAL STORAGE - Setting Up localStorage to grab name */
-let userNameInfo = JSON.parse(localStorage.getItem(name)) || [];
+/* CAT IMAGE DIV - Area where cat images will load */
+var catTitleEl = document.getElementById("start-title");
 
-/* FOOD IMAGE DIV - Area where food images will load */
-var foodTitleEl = document.getElementById("food-title");
+/* CAT IMAGES - P element for cat images */
+var catPicsEl = document.getElementById("cat-pics");
 
-/* FOOD IMAGES - P element for food images */
-var foodPicsEl = document.getElementById("foodpics");
-
-/* FOOD VOTING BUTTONS - Buttons to vote on food image */
-var foodVotingEl = document.getElementById("buttons");
+/* CAT VOTING BUTTONS - Buttons to vote on cat image */
+var catVotingEl = document.getElementById("buttons");
 
 // Function that starts when submit button is clicked
 var startFunction = function (event) {
   event.preventDefault();
 
+  // Sets name equal to the value of the name input element (trims any spaces)
   var name = nameInputEl.value.trim();
 
   console.log(name);
 
-  // Gets value from the name input element
+  // Conditional for name being an input - then run the cat image generator function
   if (name) {
-    foodImageGenerator();
-    // Clear out old content so user can re-submit information
-    nameInputEl.value = "";
+    catImageGenerator();
+
+    /* LOCAL STORAGE - Setting Up localStorage to grab name */
+    let userNameInfo = JSON.parse(localStorage.getItem(name)) || [];
+
+    // Setting up localStorage for the userName - this will contain the user.value()
+    var userName = {
+      userInput: name,
+    };
+    userNameInfo.push(userName);
+    localStorage.setItem("username", JSON.stringify(userNameInfo));
   }
 };
 
-// Foodish Image Generator
-var foodImageGenerator = function () {
+// Cat Image Generator
+var catImageGenerator = function () {
+  // Hide the Welcome element for the user
   hide(welcomeEl);
-  // Test that function is working with an alert
-  var foodishURL = "https://foodish-api.herokuapp.com/";
-  var name = nameInputEl.value.trim();
-  console.log(foodishURL);
-  fetch(foodishURL).then(function (response) {
+
+  // Set the Cat API URL - this will randomly generate a cat image
+  var theCatAPIURL = "https://api.thecatapi.com/v1/images/search";
+
+  // Fetch The Cat API URL and then do the following if the response is ok
+  fetch(theCatAPIURL, {
+    headers: { "x-api-key": " e0f87712-5e34-4cf6-b2b4-27764dde618c" },
+  }).then(function (response) {
     if (response.ok) {
-      // Adds in dynamic HTML that addresses the user by their name
-      foodTitleEl.innerHTML =
-        "<h3> Hi there " +
-        name +
-        "," +
-        " what do you think about this dish? </h3> ";
+      response.json().then(function (data) {
+        console.log(data);
+        console.log(data[0].url);
 
-      //Adds in dynamic HTML that shows a random food image
-      foodPicsEl.innerHTML = "<img src= " + foodishURL + ">";
+        console.log(JSON.parse(localStorage.getItem("username")));
 
-      //   var foodPic = document.createElement("img");
-      //   foodPic.setAttribute("src", foodishURL);
+        let inputName = localStorage.getItem("username");
 
-      // Adds in a "yes" or "no" voting button for the food image
-      foodVotingEl.innerHTML =
-        "<button class = 'btn' id= 'yesBtn'> Like It! </button>" +
-        "<button class = 'btn' id='noBtn'> Dislike It! </button>";
+        // Adds in dynamic HTML that addresses the user by their name
+        catTitleEl.innerHTML =
+          "<h3> Hi there " +
+          inputName +
+          "," +
+          " what do you think about this cat? </h3> ";
 
-      /* FOOD VOTING BUTTONS (YES) - Yes button to vote on food image */
-      var voteYesEl = document.getElementById("yesBtn");
-      /* FOOD VOTING BUTTONS (NO)  - No button to vote on food image */
-      var voteNoEl = document.getElementById("noBtn");
-      
-      // When user clicks the yes button under the food image - run the following function
-      voteYesEl.addEventListener("click", console.log("You clicked yes!"));
-      // When the user clicks on the no button under the food image - run the following function
-      voteNoEl.addEventListener("click", console.log("You clicked no!"));
-      console.log("All good!");
+        //Adds in dynamic HTML that shows a random cat image with a fixed width and height ratio
+        catPicsEl.innerHTML =
+          "<img src= " + data[0].url + " width ='400' height='300'>";
+
+        // Adds in a "yes" or "no" voting button for the cat image
+        catVotingEl.innerHTML =
+          "<button class = 'btn' id= 'yesBtn'><i class = 'fa fa-check'></i> Purrfect! </button>" +
+          "<button class = 'btn' id='noBtn'><i class = 'fa fa-close'></i> Pawsitively Not! </button>";
+
+        /* CAT VOTING BUTTONS (YES) - Yes button to vote on cat image */
+        var voteYesEl = document.getElementById("yesBtn");
+
+        /* CAT VOTING BUTTONS (NO)  - No button to vote on cat image */
+        var voteNoEl = document.getElementById("noBtn");
+
+        // When user clicks the yes button under the cat image - run the following function
+        voteYesEl.addEventListener("click", yesBtnFunction);
+
+        // When the user clicks on the no button under the cat image - run the following function
+        voteNoEl.addEventListener("click", noBtnFunction);
+
+        console.log("All good!");
+      });
+      // Yes Button Function
+      var yesBtnFunction = function () {
+        console.log("Yes Button Clicked!");
+
+        // Runs the cat image selected function
+        catImageSelected();
+      };
+
+      // No Button Function
+      var noBtnFunction = function () {
+        console.log("No Button Clicked!");
+
+        // Runs the cat image generator function again
+        catImageGenerator();
+      };
+
+      // Runs when cat image is selected
+      var catImageSelected = function () {
+        console.log();
+      };
     } else {
+      // Console log if error
       console.log("Help!");
     }
   });
 };
-
-// Setting up localStorage for the userName - this will contain the user.value()
-var userName = {
-  userInput: name,
-};
-userNameInfo.push(userName);
-localStorage.setItem("username", JSON.stringify(userNameInfo));
 
 // Hide Elements
 function hide(element) {
