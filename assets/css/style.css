@@ -33,6 +33,12 @@ p {
   text-align: center;
 }
 
+/* Set a color for the username span ID - user input name */ 
+
+#username {
+  color: red;
+}
+
 #user-form {
   padding: 20px;
   text-align: center;

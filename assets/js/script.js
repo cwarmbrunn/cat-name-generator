@@ -32,15 +32,12 @@ var startFunction = function (event) {
   if (name) {
     catImageGenerator();
 
-    /* LOCAL STORAGE - Setting Up localStorage to grab name */
-    let userNameInfo = JSON.parse(localStorage.getItem(name)) || [];
-
-    // Setting up localStorage for the userName - this will contain the user.value()
+    // Setting up localStorage for the userName - this will contain the user's name
     var userName = {
       userInput: name,
     };
-    userNameInfo.push(userName);
-    localStorage.setItem("User Name", JSON.stringify(userNameInfo));
+
+    localStorage.setItem("User Name", JSON.stringify(userName));
   }
 };
 
@@ -61,13 +58,16 @@ var catImageGenerator = function () {
         console.log(data);
         console.log(data[0].url);
 
-        var inputName = localStorage.getItem("User Name");
+        var inputName = JSON.parse(localStorage.getItem("User Name")).userInput;
         console.log(inputName);
+        console.log(inputName["userInput"]);
 
         // Adds in dynamic HTML that addresses the user by their name
         catTitleEl.innerHTML =
           "<h3> Hi there " +
+          "<span id='username'>" +
           inputName +
+          "</span>" +
           "," +
           " what do you think about this cat? </h3> ";
 
@@ -115,12 +115,7 @@ var catImageGenerator = function () {
       // Runs when cat image is selected
       var catImageSelected = function () {
         hide(catVotingEl);
-        hide(catPicsEl);
         hide(catTitleEl);
-
-        // var catImgData = catPicsEl.innerHTML.getAttribute("src");
-
-        // console.log(catImgData);
 
         /* LOCAL STORAGE - Setting up localStorage to grab image URL */
         let catPictureURL =
@@ -144,7 +139,8 @@ var catImageGenerator = function () {
 // Cat Name Generator will start here
 var catNameGenerator = function () {
   catNameGeneratorEl.innerHTML =
-    "<h3> Now that you have a furry friend picked out, decide on a name! </h3>";
+    "<h3> Now that you have a furry friend picked out, decide on a name! </h3>" +
+    "<p> <em> As a reminder, the cat you selected is shown above. <em></p>";
 };
 
 // Hide Elements
