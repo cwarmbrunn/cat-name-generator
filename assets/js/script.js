@@ -60,7 +60,6 @@ var catImageGenerator = function () {
 
         var inputName = JSON.parse(localStorage.getItem("User Name")).userInput;
         console.log(inputName);
-        console.log(inputName["userInput"]);
 
         // Adds in dynamic HTML that addresses the user by their name
         catTitleEl.innerHTML =
@@ -140,7 +139,42 @@ var catImageGenerator = function () {
 var catNameGenerator = function () {
   catNameGeneratorEl.innerHTML =
     "<h3> Now that you have a furry friend picked out, decide on a name! </h3>" +
-    "<p> <em> As a reminder, the cat you selected is shown above. <em></p>";
+    "<p> <em> As a reminder, the cat you selected is shown above. <em></p>" +
+    "<button class = 'btn' id= 'nameBtn'><i class = 'fa fa-check'></i> Generate a name! </button>";
+  
+  // Defining the name button element  
+  var nameButtonEl = document.getElementById("nameBtn");  
+  // // if name button clicked, run function 
+  nameButtonEl.addEventListener("click", nameButtonClicked);
+  
+};
+
+var nameButtonClicked = function () {
+  // hide(catNameGeneratorEl);
+  $.ajax({
+    url: "https://randomuser.me/api/",
+    dataType: "json",
+    success: function (data) {
+      console.log(data.results[0].name);
+      var firstNameData = JSON.stringify(data.results[0].name.first);
+      var lastNameData = JSON.stringify(data.results[0].name.last);
+      var titleNameData = JSON.stringify(data.results[0].name.title);
+      var catName = {catData: titleNameData + firstNameData + lastNameData};
+      localStorage.setItem("Cat Name", JSON.stringify(catName));
+      console.log(catName);
+      var catInput = JSON.parse(localStorage.getItem("Cat Name")).catData;
+      console.log(catInput);
+      catNameGeneratorEl.innerHTML =
+        "<h3> The name chosen for your cat: </h3>" +
+        "<p>" + catInput + "</p>" +
+        "<p> Don't like this name? Click to try again! <p>" +
+        "<button class = 'btn' id= 'nameBtn'><i class = 'fa fa-check'></i> Generate a new name! </button>";
+        // Defining the name button element  
+      var nameButtonEl = document.getElementById("nameBtn");  
+      // // if name button clicked, run function 
+      nameButtonEl.addEventListener("click", nameButtonClicked);
+    },
+  });
 };
 
 // Hide Elements

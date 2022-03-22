@@ -98,3 +98,8 @@ footer {
   margin-top: 20px;
   text-align: center;
 }
+
+#nameBtn {
+  text-align: center;
+  display: inline-block;
+}
