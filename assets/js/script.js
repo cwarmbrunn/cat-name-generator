@@ -156,17 +156,17 @@ var nameButtonClicked = function () {
     dataType: "json",
     success: function (data) {
       console.log(data.results[0].name);
-      var firstNameData = JSON.stringify(data.results[0].name.first);
-      var lastNameData = JSON.stringify(data.results[0].name.last);
-      var titleNameData = JSON.stringify(data.results[0].name.title);
-      var catName = {catData: titleNameData + firstNameData + lastNameData};
+      var firstNameData = JSON.stringify(data.results[0].name.first).replace(/\"/g, "");
+      var lastNameData = JSON.stringify(data.results[0].name.last).replace(/\"/g, "");
+      var titleNameData = JSON.stringify(data.results[0].name.title).replace(/\"/g, "");
+      var catName = {catData: titleNameData + " " + firstNameData + " " + lastNameData};
       localStorage.setItem("Cat Name", JSON.stringify(catName));
       console.log(catName);
       var catInput = JSON.parse(localStorage.getItem("Cat Name")).catData;
       console.log(catInput);
       catNameGeneratorEl.innerHTML =
         "<h3> The name chosen for your cat: </h3>" +
-        "<p>" + catInput + "</p>" +
+        "<span>" + catInput + "</span>" +
         "<p> Don't like this name? Click to try again! <p>" +
         "<button class = 'btn' id= 'nameBtn'><i class = 'fa fa-check'></i> Generate a new name! </button>";
         // Defining the name button element  
