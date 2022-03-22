@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Cat Name Generator </title>
+    <!-- Link to tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <title> Cat Name Generator </title> 
 
 
     <!-- For whoever will work on CSS - we could include a Google Font link here! -->
@@ -21,24 +23,17 @@
 
 </head>
 
-<body>
+<body class="bg-blue-300">
 
     <!-- FORM START -->
-
-    <!-- Since we will need user input (needs to accept/respond to it), 
-        it could be useful to grab the name of the user, 
-    then store in localStorage + at the end 
-    display the cat photo they picked, 
-    their name and the name they picked for their cat. 
-    ("Hi (user), here's your cat (photo) and the name you picked for them (name)"-->
 
     <div id="welcome">
         <h1> Welcome to the Cat Name Generator!</h1>
         <p> Enter your name and you can get started finding (and naming) your purrfect feline friend! </p>
         <form id="user-form">
             <label class="form-label" for="name"> Your Name (required): </label>
-            <input name="name" id="name" type="text" class="form-input" placeholder="Puss in Boots" required="true">
-            <button type="submit" class="btn submitBtn"> Submit</button>
+            <input name="name" id="name" type="text" class="form-input border-2 border-black" placeholder="Puss in Boots" required="true">
+            <button type="submit" class="btn submitBtn   bg-red-500 font-bold"> Submit</button>
         </form>
     </div>
     <!-- FORM END -->

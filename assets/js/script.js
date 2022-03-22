@@ -78,8 +78,8 @@ var catImageGenerator = function () {
 
         // Adds in a "yes" or "no" voting button for the cat image
         catVotingEl.innerHTML =
-          "<button class = 'btn' id= 'yesBtn'><i class = 'fa fa-check'></i> Purrfect! </button>" +
-          "<button class = 'btn' id='noBtn'><i class = 'fa fa-close'></i> Pawsitively Not! </button>";
+          "<button class = 'btn bg-red-500 font-bold' id= 'yesBtn'><i class = 'fa fa-check'></i> Purrfect! </button>" +
+          "<button class = 'btn bg-red-500 font-bold' id='noBtn'><i class = 'fa fa-close'></i> Pawsitively Not! </button>";
 
         /* CAT VOTING BUTTONS (YES) - Yes button to vote on cat image */
         var voteYesEl = document.getElementById("yesBtn");
@@ -140,7 +140,7 @@ var catNameGenerator = function () {
   catNameGeneratorEl.innerHTML =
     "<h3> Now that you have a furry friend picked out, decide on a name! </h3>" +
     "<p> <em> As a reminder, the cat you selected is shown above. <em></p>" +
-    "<button class = 'btn' id= 'nameBtn'><i class = 'fa fa-check'></i> Generate a name! </button>";
+    "<button class = 'btn bg-red-500 font-bold' id= 'nameBtn'><i class = 'fa fa-check'></i> Generate a name! </button>";
   
   // Defining the name button element  
   var nameButtonEl = document.getElementById("nameBtn");  
@@ -168,7 +168,7 @@ var nameButtonClicked = function () {
         "<h3> The name chosen for your cat: </h3>" +
         "<span>" + catInput + "</span>" +
         "<p> Don't like this name? Click to try again! <p>" +
-        "<button class = 'btn' id= 'nameBtn'><i class = 'fa fa-check'></i> Generate a new name! </button>";
+        "<button class = 'btn bg-red-500 font-bold' id= 'nameBtn'><i class = 'fa fa-check'></i> Generate a new name! </button>";
         // Defining the name button element  
       var nameButtonEl = document.getElementById("nameBtn");  
       // // if name button clicked, run function 
