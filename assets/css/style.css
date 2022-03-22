@@ -101,4 +101,5 @@ footer {
 
 #nameBtn {
   text-align: center;
+  display: inline-block;
 }
