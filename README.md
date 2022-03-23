@@ -22,6 +22,8 @@ Head over to https://cwarmbrunn.github.io/cat-name-generator/ to view the page l
 - Font Awesome CSS Icons
 - JQuery 
 - Tailwind CSS
+- The Cat API
+- Random User API
 
 ---
 
