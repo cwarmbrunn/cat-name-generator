@@ -21,6 +21,7 @@ Head over to https://cwarmbrunn.github.io/cat-name-generator/ to view the page l
 - CSS
 - Font Awesome CSS Icons
 - JQuery 
+- Tailwind CSS
 
 ---
 
@@ -30,8 +31,7 @@ You can clone this repo - no special instructions to load this!
 
 ---
 
-**Screenshot and GIF:**
+**Screenshot:**
 
-![]()
+![cat name generator opening page](./assets/images/screenshots/cat-name-generator.jpg)
 
-![]()
